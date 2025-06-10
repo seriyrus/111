@@ -1,16 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/index.css' %}">
     <title>Conveter</title>
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">в F!</button>
-    </form>
-    {{far}}
+    <div class="formholder">
+        <form method="post">
+            {% csrf_token %}
+            {{courseform.as_p}}
+            <button type="submit">add</button>
+        </form>
+
+        <form method="post">
+            {% csrf_token %}
+            {{studentform.as_p}}
+            <button type="submit">add</button>
+        </form>
+    </div>
+
+    
+    <div class="list">
+        {% for student in students %}
+            {{student}}<br>
+        {% endfor %}
+    </div>
+    
 </body>
 </html>
